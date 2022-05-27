@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -8,6 +9,13 @@ import {
 } from '@expo-google-fonts/quicksand';
 
 const LandingScreen = props => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      props.navigation.navigate('LogInScreen');
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   let [fontsLoaded] = useFonts({
     Quicksand_700Bold
   });
